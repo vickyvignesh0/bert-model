@@ -29,7 +29,7 @@ def ping():
 
 @app.route('/analyze', methods=['POST', 'GET'])
 def analyze():
-    req = json.loads(request.json)
+    req = json.loads(json.dumps(request.json))
     review, resp = None, {}
 
     if req:
