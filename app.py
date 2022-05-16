@@ -1,4 +1,5 @@
 import torch
+import json
 from flask import Flask, request
 from transformers import BertTokenizer
 
@@ -28,8 +29,8 @@ def ping():
 
 @app.route('/analyze', methods=['POST', 'GET'])
 def analyze():
-    req = request.json
-    reviews, resp = None, {}
+    req = json.loads(request.json)
+    review, resp = None, {}
 
     if req:
         reviews = req['reviews']
